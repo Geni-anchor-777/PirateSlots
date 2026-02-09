@@ -195,7 +195,7 @@ async function roll_slot(number, slot, slot_border) {
 }
 
 const mx = 7
-const mn = 7
+const mn = 0
 async function main(balance, bet, delay, rounds,win_nums) {
   const r1 = win_nums.r1;
   const r2 = win_nums.r2;
@@ -307,3 +307,4 @@ spin.onclick = async () => {
     console.log("Spinning")
   }
 };
+
