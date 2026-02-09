@@ -1,17 +1,5 @@
 const root = document.documentElement;
 
-// const profile = document.getElementById("profile")
-// const slots = document.getElementById("slots")
-// const roulette = document.getElementById("roulette")
-// const store = document.getElementById("store")
-// const leaderboad = document.getElementById("leaderboad")
-
-// const money = document.getElementById("money")
-// money.onclick = () =>{
-//   window.location.href = "get_money.html"
-// }
-
-
 const body = document.getElementById("body")
 const nav = document.getElementById("nav")
 const Main = document.getElementById("main")
@@ -55,74 +43,18 @@ async function update_balance(amount, operation) {
   const start = balance.value;
   if (operation === "+") {
     balance.value = start + amount;
-    //update_cash();
     for (let i = 0; i <= amount; i+=5) {
       balance_elem.textContent = "Your balance: " + money_prefix + (start + i);
       await sleep(5);
     }
   } else {
     balance.value = start - amount;
-    //update_cash();
     for (let i = 0; i <= amount; i+=10) {
       balance_elem.textContent = "Your balance: " + money_prefix + (start - i);
       await sleep(1);
     }
   }
 }
-
-// async function update_cash() {
-//   const formData = new FormData();
-//   formData.append("cash", balance.value);
-//   try {
-//     const res = await fetch("http://localhost/Slots/get_user.php", {
-//       method: "POST",
-//       body: formData,
-//       cache: "no-store"
-//     });
-//     const data = await res.json();
-//     console.log("User:" + data);
-//     if (res.status === 200) {
-//       console.log("Updated cash");
-//     } else {
-//       console.log("Error: Cant update cash");
-//     }
-//   } catch (err) {
-//     console.error("Fetch error:", err);
-//   }
-// }
-
-// async function load_cash() {
-//   const res = await fetch('http://localhost/Slots/get_user.php');
-//   if(res.status === 200) {
-//     const user = await res.json();
-//     console.log(user);
-//     balance.value = user.cash;
-//     balance_elem.textContent = "Your balance: " + money_prefix + balance.value;
-//   } else {
-//     balance.value = 0;
-//     balance_elem.textContent = "Not logged in";
-//   }
-// }
-// load_cash();
-
-// async function select_from_db(e) {
-//   try {
-//     const res = await fetch("http://localhost/Slots/server.php", { method: "GET" });
-//     const data = await res.json();
-//     return data;
-//   } catch (err) {
-//     console.error("Fetch error:", err);
-//   }
-// }
-
-// async function convent_db_data(db_data, row) {
-//   let table = {};
-//   for (let i = 0; i < db_data.length; i++) {
-//     table[i] = db_data[i][row];
-//   }
-//   return table;
-// }
-
 
 async function falling_coins_effect(ms_life_time){
   m05.style.display = "flex"
@@ -261,7 +193,7 @@ async function roll_slot(number, slot, slot_border) {
   await sleep(slot_rotation_speed);
 }
 
-const mx = 7
+const mx = 0
 async function main(balance, bet, delay, rounds,win_nums) {
   const r1 = win_nums.r1;
   const r2 = win_nums.r2;
@@ -356,7 +288,6 @@ spin.onclick = async () => {
     bet_elem.value = "";
 
     if (balance.value <= 0) {
-      //flicker_effect("No money to spin");
     } else {
       if (bet <= balance.value && bet > 0) {
         wheel.style.transform = `translate(-50%, -50%) rotate(-120deg)`;
@@ -366,10 +297,10 @@ spin.onclick = async () => {
         update_balance(bet, "-");
         main(balance, bet, delay,rounds,win_nums);
       } else {
-        //flicker_effect("Bet needs to be lower or equal");
       }
     }
   }else{
     console.log("Spinning")
   }
 };
+
