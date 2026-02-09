@@ -193,7 +193,7 @@ async function roll_slot(number, slot, slot_border) {
   await sleep(slot_rotation_speed);
 }
 
-const mx = 0
+const mx = 7
 async function main(balance, bet, delay, rounds,win_nums) {
   const r1 = win_nums.r1;
   const r2 = win_nums.r2;
@@ -238,7 +238,7 @@ async function main(balance, bet, delay, rounds,win_nums) {
       slot3.textContent = r3
       await sleep(80)
     }
-    const t = 2300;
+    const t = 1800;
 
     if (r1 === r2 && r2 === r3) {
       if (r1 === 7) {
@@ -303,4 +303,5 @@ spin.onclick = async () => {
     console.log("Spinning")
   }
 };
+
 
